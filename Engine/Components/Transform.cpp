@@ -33,19 +33,19 @@ namespace primal::transform {
 
 	math::v4 
 	component::rotation() const {
-		assert(is_valid);
+		assert(is_valid());
 		return rotations[id::index(_id)];
 	}
 
 	math::v3
 	component::position() const {
-		assert(is_valid);
+		assert(is_valid());
 		return positions[id::index(_id)];
 	}
 
 	math::v3
 	component::scale() const {
-		assert(is_valid);
+		assert(is_valid());
 		return scales[id::index(_id)];
 	}
 }

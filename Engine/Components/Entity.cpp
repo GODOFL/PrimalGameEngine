@@ -54,7 +54,8 @@ namespace primal::game_entity {
 	}
 
 	bool is_alive(entity e) {
-		assert(e.get_id());
+		//ÄÚ´æĞ¹Â¶
+		assert(e.is_valid());
 		const entity_id id{ e.get_id() };
 		const id::id_type index{ id::index(id) };
 		assert(index < generations.size());
