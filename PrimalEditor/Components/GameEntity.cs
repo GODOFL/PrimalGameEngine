@@ -1,4 +1,5 @@
 ﻿using PrimalEditor.Common;
+using PrimalEditor.DllWrapper;
 using PrimalEditor.GameProject;
 using PrimalEditor.Utilities;
 using System;
@@ -17,6 +18,35 @@ namespace PrimalEditor.Components {
     [DataContract]
     [KnownType(typeof(Transform))]
     class GameEntity : ViewModelBase {
+        private int _entityId = ID.INVALID_ID;
+        public int EntityId {
+            get => _entityId;
+            set {
+                if (_entityId != value) { 
+                    _entityId = value;
+                    OnProperChanged(nameof(EntityId));
+                }
+            }
+        }
+
+        private bool _isActive;
+        public bool IsActive { 
+            get => _isActive;
+            set {
+                if (_isActive != value) { 
+                    _isActive = value;
+                    if (_isActive) {
+                        EntityId = EngineAPI.CreateGameEntity(this);
+                        Debug.Assert(ID.IsValid(_entityId));
+                    }
+                    else {
+                        EngineAPI.RemoveGameEntity(this);
+                    }
+                    OnProperChanged(nameof(IsActive));
+                }
+            }
+        }
+
         private bool _isEnabled = true;
         [DataMember]
         public bool IsEnabled {
@@ -46,6 +76,9 @@ namespace PrimalEditor.Components {
         [DataMember(Name = nameof(Components))]
         private readonly ObservableCollection<Component> _components = new ObservableCollection<Component> ();
         public ReadOnlyObservableCollection<Component> Components { get; private set; }
+
+        public Component GetComponent(Type type) => Components.FirstOrDefault(c => c.GetType() == type);
+        public T GetComponent<T>() where T : Component => GetComponent(typeof(T)) as T;
 
         //public ICommand RenameCommand { set; private get; }
         //public ICommand IsEnabledCommand { set; private get; }
