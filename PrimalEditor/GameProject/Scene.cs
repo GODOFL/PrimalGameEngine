@@ -29,7 +29,8 @@ namespace PrimalEditor.GameProject {
         [DataMember]
         public Project Project { get; private set; }
 
-        private bool _isActive;
+        //待改default scene添加按钮无法互动
+        private bool _isActive = true;
         public bool IsActive {
             get => _isActive;
             set {
@@ -75,6 +76,7 @@ namespace PrimalEditor.GameProject {
                 entity.IsActive = IsActive;
             }
 
+            //待改有bug会添加两个游戏实体
             AddGameEntityCommand = new RelayCommand<GameEntity>(x => {
                 AddGameEntity(x);
                 var entityIndex = _gameEntities.Count - 1;

@@ -25,6 +25,7 @@ namespace PrimalEditor.Editors {
             InitializeComponent();
         }
 
+        //添加空游戏实体按钮
         private void OnAddGameEntity_Button_Click(object sender, RoutedEventArgs e) {
             var btn = sender as Button;
             var vm = btn.DataContext as Scene;

@@ -36,7 +36,7 @@ namespace primal::game_entity {
 		const id::id_type index{ id::index(id) };
 
 		//Create transform component
-		//ÄÚ´æĞ¹Â¶
+		//ÄÚ´æĞ¹Â¶£¡£¡£¡
 		assert(!transforms[index].is_valid());
 		transforms[index] = transform::create_transform(*info.transform, new_entity);
 		if (!transforms[index].is_valid()) return {};
