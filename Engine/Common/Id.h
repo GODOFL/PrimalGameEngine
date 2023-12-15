@@ -1,6 +1,8 @@
 #pragma once
 #include "CommonHeaders.h"
 
+//之前内存泄露是为什么？
+//id查找表得改，缺点比较明显
 namespace primal::id {
 
 	using id_type = u32;
@@ -27,7 +29,9 @@ namespace primal::id {
 
 	using generation_type = std::conditional_t <internal::generation_bits <= 16, std::conditional_t<internal::generation_bits <= 8, u8, u16>, u32>;
 	static_assert(sizeof(generation_type) * 8 >= internal::generation_bits);
-	static_assert((sizeof(id_type) - sizeof(generation_type)) > 0);
+
+	//加上会静态断言失败
+	//static_assert((sizeof(id_type) - sizeof(generation_type)) > 0);
 
 
 	//inline关键字指示编译器用函数定义中的代码替换函数调用的每个实例

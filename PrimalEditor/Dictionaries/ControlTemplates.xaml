@@ -8,4 +8,9 @@
     <Style TargetType="{x:Type TextBox}" x:Key="{x:Type TextBox}" BasedOn="{StaticResource TextBoxStyle}">
         <EventSetter Event="KeyDown" Handler="OnTextBox_KeyDown"/>
     </Style>
+
+    <Style x:Key="PrimalWindowStyle" TargetType="{x:Type Window}">
+        <Setter Property="BorderBrush" Value="{StaticResource Editor.Selected.BackgroundBrush}"/>
+        <Setter Property="Background" Value="{StaticResource Editor.Window.GrayBrush1}"/>
+    </Style>
 </ResourceDictionary>
