@@ -29,8 +29,10 @@ namespace PrimalEditor.GameProject {
         [DataMember]
         public Project Project { get; private set; }
 
-        //待改default scene添加按钮无法互动
-        private bool _isActive = true;
+        //待改default scene能被删除？
+        //之前忘记将数据传入客户端
+        private bool _isActive;
+        [DataMember]
         public bool IsActive {
             get => _isActive;
             set {
@@ -57,7 +59,9 @@ namespace PrimalEditor.GameProject {
             else { 
                 _gameEntities.Insert(index, entity);
             }
-            _gameEntities.Add(entity);
+
+            //AddGameEntity中多了此行导致添加多了一个游戏实体
+            //_gameEntities.Add(entity);
         }
 
         private void RemoveGameEntity(GameEntity entity) {
@@ -76,7 +80,6 @@ namespace PrimalEditor.GameProject {
                 entity.IsActive = IsActive;
             }
 
-            //待改有bug会添加两个游戏实体
             AddGameEntityCommand = new RelayCommand<GameEntity>(x => {
                 AddGameEntity(x);
                 var entityIndex = _gameEntities.Count - 1;

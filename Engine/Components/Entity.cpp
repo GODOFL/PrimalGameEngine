@@ -36,7 +36,8 @@ namespace primal::game_entity {
 		const id::id_type index{ id::index(id) };
 
 		//Create transform component
-		//内存泄露！！！
+		//断言失败？原因
+		//没有重新编译整个工程项目导致运行了之前的代码
 		assert(!transforms[index].is_valid());
 		transforms[index] = transform::create_transform(*info.transform, new_entity);
 		if (!transforms[index].is_valid()) return {};

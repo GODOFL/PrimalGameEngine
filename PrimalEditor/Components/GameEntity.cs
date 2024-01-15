@@ -192,7 +192,7 @@ namespace PrimalEditor.Components {
         public void Refresh() {
             _enableUpdates = false;
             UpdateMSGameEntity();
-            _enableUpdates = false;
+            _enableUpdates = true;
         }
 
         public MSEntity(List<GameEntity> entities) {
