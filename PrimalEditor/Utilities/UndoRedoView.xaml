@@ -17,7 +17,7 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <TextBox Text="{Binding Name}"/>
+                    <TextBox Text="{Binding Name}" Foreground="{StaticResource Editor.FontBrush}"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
@@ -29,7 +29,7 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <TextBox Text="{Binding Name}" Foreground="Gray"/>
+                    <TextBox Text="{Binding Name}" Foreground="{StaticResource Editor.Disabled.FontBrush}"/>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
