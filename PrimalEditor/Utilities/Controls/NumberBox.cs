@@ -50,7 +50,7 @@ namespace PrimalEditor.Utilities.Controls{
         }
 
         private void OnTextBlock_Mouse_LBU(object sender, MouseButtonEventArgs e) {
-            if (_captured) {
+            if (_captured) { 
                 Mouse.Capture(null);
                 _captured = false;
                 e.Handled= true;
